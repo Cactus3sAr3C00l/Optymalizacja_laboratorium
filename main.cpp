@@ -338,7 +338,7 @@ vector<string> positiveErrorHandler(const vector<string>& spectrum, const vector
 }
 
 void pathByOne(vector<int> &notVisited, vector<string> &spectrum, vector<vector<int>> &graph, int &index, string &output, vector<vector<int>> &updatedGraph, vector<int> &seq) {
-    bool progress = true; // Ensure progress to avoid infinite loops
+    bool progress = true; 
     while (progress && !notVisited.empty()) {
         progress = false;
         vector<int> pickOnePath;
@@ -352,14 +352,11 @@ void pathByOne(vector<int> &notVisited, vector<string> &spectrum, vector<vector<
             if (i == spectrum.size() - 1 && !pickOnePath.empty()) {
                 int randomPath = rand() % pickOnePath.size();
 
-                // Safeguard: Check if pickOnePath is non-empty
                 assert(!pickOnePath.empty());
 
-                // Append overlapping part to the output
                 string oligo = spectrum[pickOnePath[randomPath]];
                 int shorter = min(spectrum[index].size(), spectrum[pickOnePath[randomPath]].size());
 
-                // Safeguard: Ensure shorter > 0 before using substr
                 if (shorter > 0) {
                     output = mergeSequences(output, oligo);
                     index = pickOnePath[randomPath];
@@ -367,9 +364,7 @@ void pathByOne(vector<int> &notVisited, vector<string> &spectrum, vector<vector<
 
                 }
 
-                // Update index and mark vertex as visited
 
-                // Safeguard: Ensure index exists in notVisited before erasing
                 auto it = find(notVisited.begin(), notVisited.end(), index);
                 if (it != notVisited.end()) {
                     notVisited.erase(it);
@@ -633,7 +628,6 @@ vector<int> greedyAlgorithm(vector<vector<int>> updatedGraph, int V, vector<vect
         if(end){
             break;
         }
-      //  cout << "Selected vertex: " << vertex << endl;
         toMerge.push_back(vertex);
 
         if (minValue == INT_MAX) {
@@ -690,7 +684,7 @@ vector<int> greedyAlgorithm(vector<vector<int>> updatedGraph, int V, vector<vect
 
     }
 
-    //tutaj juz taka desperacja wleciala ze chuj!
+   
     string tekst="";
     vector<int> fixedSeq;
 
